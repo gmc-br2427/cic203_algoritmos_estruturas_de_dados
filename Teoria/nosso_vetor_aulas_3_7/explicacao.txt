@@ -1,0 +1,6 @@
+AULA 3: NossoVetor.java, TesteBubble.java, TesteBusca.java
+essa aula foi mais sobre a análise de complexidade do Bubble Sort e esse bgl
+da busca binária e busca linear
+
+AULA 7: NossoVetor.java, TesteQuickMerge.java
+explicação dos algoritmos de ordenação Quick Sort e Merge Sort
