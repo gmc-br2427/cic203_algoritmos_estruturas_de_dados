@@ -125,5 +125,44 @@ public class ArvoreBinariaBusca {
         return atual.valor + somatorioRecursivo(atual.esquerda) + somatorioRecursivo(atual.direita);
     }
 
+    public void remover (int valor){
+        raiz = removerRecursivo(raiz, valor);
+    }
 
+    private No removerRecursivo(No atual, int valor){
+        if (atual == null) {
+            return null;
+        }
+        if (valor < atual.valor) {
+            atual.esquerda = removerRecursivo(atual.esquerda, valor);
+        } 
+        else if (valor > atual.valor) {
+            atual.direita = removerRecursivo(atual.direita, valor);
+        } 
+        else {
+            // Caso 1: nó sem filhos
+            if (atual.esquerda == null && atual.direita == null) {
+                return null;
+            }
+            // Caso 2: nó com apenas um filho
+            if (atual.esquerda == null) {
+                return atual.direita;
+            }
+            if (atual.direita == null) {
+                return atual.esquerda;
+            }
+            // Caso 3: nó com dois filhos
+            No sucessor = encontrarMenor(atual.direita);
+            atual.valor = sucessor.valor;
+            atual.direita = removerRecursivo(atual.direita, sucessor.valor);
+        }
+        return atual;
+    }
+
+    private No encontrarMenor(No no) {
+        while (no.esquerda != null) {
+            no = no.esquerda;
+        }
+        return no;
+    }
 }
